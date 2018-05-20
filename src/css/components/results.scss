@@ -1,8 +1,10 @@
 .results{
 	opacity: 0;
 	padding: 2rem;
-	transform: translateY(-10%);
-	animation: showResults $animationProps;
+	-webkit-transform: translateY(-10%);
+	        transform: translateY(-10%);
+	-webkit-animation: showResults $animationProps;
+	        animation: showResults $animationProps;
 	&__header{
 		margin: $marginAll;
 		padding: 1rem;
@@ -36,26 +38,56 @@
 	}
 }
 .results--hide{
-	animation: hideResults $animationProps;
+	-webkit-animation: hideResults $animationProps;
+	        animation: hideResults $animationProps;
+}
+
+@-webkit-keyframes showResults{
+	0%{
+		opacity: 0;
+		-webkit-transform: translateY(-10%);
+		        transform: translateY(-10%);
+	}
+	100%{
+		opacity: 1;
+		-webkit-transform: translateY(0);
+		        transform: translateY(0);
+	}
 }
 
 @keyframes showResults{
 	0%{
 		opacity: 0;
-		transform: translateY(-10%);
+		-webkit-transform: translateY(-10%);
+		        transform: translateY(-10%);
 	}
 	100%{
 		opacity: 1;
-		transform: translateY(0);
+		-webkit-transform: translateY(0);
+		        transform: translateY(0);
+	}
+}
+@-webkit-keyframes hideResults{
+	0%{
+		opacity: 1;
+		-webkit-transform: translateY(0);
+		        transform: translateY(0);
+	}
+	100%{
+		opacity: 0;
+		-webkit-transform: translateY(10%);
+		        transform: translateY(10%);
 	}
 }
 @keyframes hideResults{
 	0%{
 		opacity: 1;
-		transform: translateY(0);
+		-webkit-transform: translateY(0);
+		        transform: translateY(0);
 	}
 	100%{
 		opacity: 0;
-		transform: translateY(10%);
+		-webkit-transform: translateY(10%);
+		        transform: translateY(10%);
 	}
 }

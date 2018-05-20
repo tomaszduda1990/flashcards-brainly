@@ -17,13 +17,16 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate($buttonPosX, -50%);
+	-webkit-transform: translate($buttonPosX, -50%);
+	        transform: translate($buttonPosX, -50%);
 }
 .header__buttonMain--active{
-    animation: buttonSlideIn $animationProps;
+    -webkit-animation: buttonSlideIn $animationProps;
+            animation: buttonSlideIn $animationProps;
 }
 .header__buttonMain--inactive{
-	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	        transform: translate(-50%,-50%);
 	transition: all 0.7s ease;
 	height: $buttonHeight*1.05;
 	width: $buttonHeight*1.05;
@@ -34,12 +37,27 @@
 
 
 
-@keyframes buttonSlideIn{
+@-webkit-keyframes buttonSlideIn{
  	0%{
- 		transform: translate($buttonPosX, -50%);
+ 		-webkit-transform: translate($buttonPosX, -50%);
+ 		        transform: translate($buttonPosX, -50%);
  	}
  	100%{
- 		transform: translate(-50%, -50%);
+ 		-webkit-transform: translate(-50%, -50%);
+ 		        transform: translate(-50%, -50%);
+	}
+}
+
+
+
+@keyframes buttonSlideIn{
+ 	0%{
+ 		-webkit-transform: translate($buttonPosX, -50%);
+ 		        transform: translate($buttonPosX, -50%);
+ 	}
+ 	100%{
+ 		-webkit-transform: translate(-50%, -50%);
+ 		        transform: translate(-50%, -50%);
 	}
 }
 
@@ -54,7 +72,8 @@
 
 	}
 	.header__buttonMain--inactive{
-		transform: translate(-50%,-50%);
+		-webkit-transform: translate(-50%,-50%);
+		        transform: translate(-50%,-50%);
 		transition: all 0.7s ease;
 		height: $buttonHeight*1.05;
 		width: $buttonHeight*1.05;

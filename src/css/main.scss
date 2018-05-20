@@ -8,19 +8,19 @@
 @import './components/results';
 
 *{
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 html{
-	font-size: 62.5%;
+  font-size: 62.5%;
 }
 body{
-	padding: 0;
-	margin: 0;
-	background: $brainlyBlue;
+  padding: 0;
+  margin: 0;
+  background: $brainlyBlue;
   height: 100vh;
   @include flex(column);
-	overflow: hidden;
-	text-align: center;
+  overflow: hidden;
+  text-align: center;
 
 }
 .logo, .footer{

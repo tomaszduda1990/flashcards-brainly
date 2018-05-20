@@ -1,4 +1,3 @@
-
 .form{
 	display: none;
 	height: $formHeight;
@@ -25,7 +24,8 @@
 }
 
 .form--active{
- 	animation: formExpand $animationProps;
+ 	-webkit-animation: formExpand $animationProps;
+ 	        animation: formExpand $animationProps;
 
  	.form__header, .form__questions{
  		transition: all 1s ease;
@@ -82,10 +82,18 @@
 			      border-top-left-radius: 0;
 			      top: 70%;
 			      left: 50%;
-			      transform: translate(-50%, -50%) rotate(-45deg);
+			      -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+			              transform: translate(-50%, -50%) rotate(-45deg);
+			      transition: min-height 0.3s cubic-bezier(.39,-0.53,.28,1.65),
+			      			  min-width 0.3s cubic-bezier(.39,-0.53,.28,1.65),
+			      			  -webkit-transform 1.2s cubic-bezier(.39,-0.53,.28,1.65);
 			      transition: min-height 0.3s cubic-bezier(.39,-0.53,.28,1.65),
 			      			  min-width 0.3s cubic-bezier(.39,-0.53,.28,1.65),
 			      			  transform 1.2s cubic-bezier(.39,-0.53,.28,1.65);
+			      transition: min-height 0.3s cubic-bezier(.39,-0.53,.28,1.65),
+			      			  min-width 0.3s cubic-bezier(.39,-0.53,.28,1.65),
+			      			  transform 1.2s cubic-bezier(.39,-0.53,.28,1.65),
+			      			  -webkit-transform 1.2s cubic-bezier(.39,-0.53,.28,1.65);
 			      background: $brainlyPurple;
 			      border: 0;
 			      
@@ -100,7 +108,8 @@
 			    	input[type="radio"] + label span{
 			    		border-radius: 50%;
 			      		border-top-right-radius: 0;
-			      		transform: translate(-50%, -50%) rotate(45deg);
+			      		-webkit-transform: translate(-50%, -50%) rotate(45deg);
+			      		        transform: translate(-50%, -50%) rotate(45deg);
 			    	}
 			    	input[type="radio"]:checked + label span{
 				    	min-height: 3rem;
@@ -111,46 +120,76 @@
 			}
  		}
  		.answers--active{
-		   animation: goUp $animationProps;
-		   animation-duration: 0.7s;
+		   -webkit-animation: goUp $animationProps;
+		           animation: goUp $animationProps;
+		   -webkit-animation-duration: 0.7s;
+		           animation-duration: 0.7s;
 		   .answers__option{
 		   	 input[type="radio"] + label span{
-		   	 	transform: translate(-50%, -50%) rotate(45deg);
+		   	 	-webkit-transform: translate(-50%, -50%) rotate(45deg);
+		   	 	        transform: translate(-50%, -50%) rotate(45deg);
 		   	 }
 		   	 &:nth-child(2){
 		   	 	input[type="radio"] + label span{
-		   	 		transform: translate(-50%, -50%) rotate(-45deg);
+		   	 		-webkit-transform: translate(-50%, -50%) rotate(-45deg);
+		   	 		        transform: translate(-50%, -50%) rotate(-45deg);
 		   	 	}
 		   	 }
 		   }
 		}
 		.answers--wrong, .answers--correct{
 		  pointer-events:none;
-		  animation: goLeft $animationProps;
-		  animation-duration: 0.7s;
-		  transform: translate(0, -100%);
+		  -webkit-animation: goLeft $animationProps;
+		          animation: goLeft $animationProps;
+		  -webkit-animation-duration: 0.7s;
+		          animation-duration: 0.7s;
+		  -webkit-transform: translate(0, -100%);
+		          transform: translate(0, -100%);
 		  .answers__option{
 		   	 input[type="radio"] + label span{
-		   	 	transform: translate(-50%, -50%) rotate(-45deg);
+		   	 	-webkit-transform: translate(-50%, -50%) rotate(-45deg);
+		   	 	        transform: translate(-50%, -50%) rotate(-45deg);
 		   	 }
 		   	 &:nth-child(2){
 		   	 	input[type="radio"] + label span{
-		   	 		transform: translate(-50%, -50%) rotate(45deg);
+		   	 		-webkit-transform: translate(-50%, -50%) rotate(45deg);
+		   	 		        transform: translate(-50%, -50%) rotate(45deg);
 		   	 	}
 		   	 }
 		   }
 
 		}
 		.answers--correct{
-		  animation-name: goRight;
+		  -webkit-animation-name: goRight;
+		          animation-name: goRight;
 		}
 
 
  	}
 }
 .form--rollIn{
-	animation: formRollIn $animationProps;
-	animation-timing-function: cubic-bezier(.52,-0.52,.7,1.09);
+	-webkit-animation: formRollIn $animationProps;
+	        animation: formRollIn $animationProps;
+	-webkit-animation-timing-function: cubic-bezier(.52,-0.52,.7,1.09);
+	        animation-timing-function: cubic-bezier(.52,-0.52,.7,1.09);
+}
+
+@-webkit-keyframes formExpand{
+	0%{
+		width: $formWidth;
+		height: $formHeight;
+		border-radius: $formRadius;
+	}
+	50%{
+		width: $formWidth*5.5;
+		height: $formHeight;
+		border-radius: 1.5rem;
+	}
+	100%{
+		width: $formWidth*5.5;
+		height: $formHeight*8;
+		border-radius: 1.5rem;
+	}
 }
 
 @keyframes formExpand{
@@ -171,39 +210,101 @@
 	}
 }
 
-@keyframes goUp{
+@-webkit-keyframes goUp{
   0%{
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
   100%{
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
   }
 }
 
-@keyframes goLeft{
+@keyframes goUp{
+  0%{
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100%{
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+}
+
+@-webkit-keyframes goLeft{
   0%{
   	background: $brainlyOrange;
-    transform: translate(0, -100%);
+    -webkit-transform: translate(0, -100%);
+            transform: translate(0, -100%);
   }
   20%{
   	background: $brainlyRed;
   }
   100%{
     background: $brainlyRed;
-    transform: translate(-100%, -100%);
+    -webkit-transform: translate(-100%, -100%);
+            transform: translate(-100%, -100%);
   }
 }
-@keyframes goRight{
+
+@keyframes goLeft{
+  0%{
+  	background: $brainlyOrange;
+    -webkit-transform: translate(0, -100%);
+            transform: translate(0, -100%);
+  }
+  20%{
+  	background: $brainlyRed;
+  }
+  100%{
+    background: $brainlyRed;
+    -webkit-transform: translate(-100%, -100%);
+            transform: translate(-100%, -100%);
+  }
+}
+@-webkit-keyframes goRight{
   0%{
     background: $brainlyOrange;
-    transform: translate(0, -100%);
+    -webkit-transform: translate(0, -100%);
+            transform: translate(0, -100%);
   }
   20%{
   	background: $brainlyMint;
   }
   100%{
     background: $brainlyMint;
-    transform: translate(100%, -100%);
+    -webkit-transform: translate(100%, -100%);
+            transform: translate(100%, -100%);
+  }
+}
+@keyframes goRight{
+  0%{
+    background: $brainlyOrange;
+    -webkit-transform: translate(0, -100%);
+            transform: translate(0, -100%);
+  }
+  20%{
+  	background: $brainlyMint;
+  }
+  100%{
+    background: $brainlyMint;
+    -webkit-transform: translate(100%, -100%);
+            transform: translate(100%, -100%);
+  }
+}
+@-webkit-keyframes formRollIn{
+  0%{
+  	opacity: 1;
+    width: $formWidth*4;
+	height: $formHeight*8;
+	border-radius: 1.5rem;
+  }
+  100%{
+  	opacity: 0;
+  	height: 1rem;
+	width: 1rem;
+	border-radius: 50%;	
   }
 }
 @keyframes formRollIn{
@@ -223,6 +324,23 @@
 
 @media screen and (min-width: 600px){
 	$formWidth: 9rem;
+	@-webkit-keyframes formExpand{
+		0%{
+			width: $formWidth;
+			height: $formHeight;
+			border-radius: $formRadius;
+		}
+		50%{
+			width: $formWidth*5.5;
+			height: $formHeight;
+			border-radius: 1.5rem;
+		}
+		100%{
+			width: $formWidth*5.5;
+			height: $formHeight*8;
+			border-radius: 1.5rem;
+		}
+	}
 	@keyframes formExpand{
 		0%{
 			width: $formWidth;
@@ -240,6 +358,20 @@
 			border-radius: 1.5rem;
 		}
 	}
+	@-webkit-keyframes formRollIn{
+	  0%{
+	  	opacity: 1;
+	    width: $formWidth*5.5;
+		height: $formHeight*8;
+		border-radius: 1.5rem;
+	  }
+	  100%{
+	  	opacity: 0;
+	  	height: 1rem;
+		width: 1rem;
+		border-radius: 50%;	
+	  }
+}
 	@keyframes formRollIn{
 	  0%{
 	  	opacity: 1;
@@ -263,7 +395,8 @@
 					transition: all 0.4s ease;
 					background-color: #ffde8c;
 					label span:hover{
-						transform: translate(-50%, -50%) rotate(360deg);
+						-webkit-transform: translate(-50%, -50%) rotate(360deg);
+						        transform: translate(-50%, -50%) rotate(360deg);
 						background-color: $brainlyBlue;
 					}
 				  &:nth-child(2){
@@ -271,7 +404,8 @@
 					background-color: #ffde8c;
 					label span:hover{
 						background-color: $brainlyBlue;
-						transform: translate(-50%, -50%) rotate(-360deg);
+						-webkit-transform: translate(-50%, -50%) rotate(-360deg);
+						        transform: translate(-50%, -50%) rotate(-360deg);
 					}
 				  }
 				}
