@@ -28,7 +28,6 @@ class Form {
 					this.form.classList.add('form--rollIn')
 				}
 				this.form.reset(); 
-				console.log(this.state)
 			    this.state.answers = removeElement(this.state.answers, e.target.dataset.index, this.header);
 			}
 		});

@@ -15,7 +15,6 @@ class App {
 		this.main.addEventListener('animationend', this.clickHandler.bind(this));
 	}
 	clickHandler(e){
-		console.log(e.animationName);
 		if(e.animationName === 'headerSlideOut'){
 			formHandler(this.formElement);
 		}
