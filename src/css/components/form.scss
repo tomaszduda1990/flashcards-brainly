@@ -1,0 +1,282 @@
+
+.form{
+	display: none;
+	height: $formHeight;
+	width: $formWidth;
+	border-radius: 50%;
+	background: $brainlyBlack;
+	overflow: hidden;
+
+	&__header{
+		margin: 0;
+		padding: 0;
+	}
+
+}
+.form--visible{
+	display: block;
+	.form__header{
+		min-height: 100%
+	}
+	.form__questions{
+		min-height: 0;
+		background: $brainlyGrey;
+	}
+}
+
+.form--active{
+ 	animation: formExpand $animationProps;
+
+ 	.form__header, .form__questions{
+ 		transition: all 1s ease;
+ 	}
+ 	.form__header{
+ 		color: $brainlyGrey;
+ 		font-size: $formHeaderFontSize;
+ 		padding: 2rem;
+ 		min-height: 20%;
+ 		opacity: 0;
+ 		z-index: 5;
+ 	}
+ 	.form__header--active{
+ 		transition: opacity 0.4s ease;
+ 		opacity: 1;
+ 	}
+ 	.form__questions{
+ 		position: relative;
+ 		min-height: 80%;
+ 		background: #e1e8ed;
+ 		.answers{
+ 			position: absolute;
+			top: 100%;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			font-size: 2rem;
+			background: $brainlyOrange;
+			@include flex(row);
+			&__option{
+				width: 50%;
+				height: 100%;
+				input[type="radio"] {
+			      display: none;
+			    }
+			    label{
+			      position: relative;
+			      display: inline-block;
+			      line-height: 50px;
+			      font-weight: $fontBold;
+			      padding: 4rem 0.5rem;
+			      height: 100%;
+			      width: 100%;
+			      border: 1px dashed black;
+			      cursor: pointer;
+			    }
+			    input[type="radio"] + label span{
+			      display: block;
+			      position: absolute;
+			      min-height: $inputTearSize;
+			      min-width: $inputTearSize;
+			      border-radius: 50%;
+			      border-top-left-radius: 0;
+			      top: 70%;
+			      left: 50%;
+			      transform: translate(-50%, -50%) rotate(-45deg);
+			      transition: min-height 0.3s cubic-bezier(.39,-0.53,.28,1.65),
+			      			  min-width 0.3s cubic-bezier(.39,-0.53,.28,1.65),
+			      			  transform 1.2s cubic-bezier(.39,-0.53,.28,1.65);
+			      background: $brainlyPurple;
+			      border: 0;
+			      
+			      
+			    }
+			    input[type="radio"]:checked + label span{
+			    	min-height: 3rem;
+			    	min-width: 3rem;
+			    	border-radius: 50%;
+			    }
+			    &:nth-child(2){
+			    	input[type="radio"] + label span{
+			    		border-radius: 50%;
+			      		border-top-right-radius: 0;
+			      		transform: translate(-50%, -50%) rotate(45deg);
+			    	}
+			    	input[type="radio"]:checked + label span{
+				    	min-height: 3rem;
+				    	min-width: 3rem;
+				    	border-radius: 50%;
+				    }
+			    }
+			}
+ 		}
+ 		.answers--active{
+		   animation: goUp $animationProps;
+		   animation-duration: 0.7s;
+		   .answers__option{
+		   	 input[type="radio"] + label span{
+		   	 	transform: translate(-50%, -50%) rotate(45deg);
+		   	 }
+		   	 &:nth-child(2){
+		   	 	input[type="radio"] + label span{
+		   	 		transform: translate(-50%, -50%) rotate(-45deg);
+		   	 	}
+		   	 }
+		   }
+		}
+		.answers--wrong, .answers--correct{
+		  pointer-events:none;
+		  animation: goLeft $animationProps;
+		  animation-duration: 0.7s;
+		  transform: translate(0, -100%);
+		  .answers__option{
+		   	 input[type="radio"] + label span{
+		   	 	transform: translate(-50%, -50%) rotate(-45deg);
+		   	 }
+		   	 &:nth-child(2){
+		   	 	input[type="radio"] + label span{
+		   	 		transform: translate(-50%, -50%) rotate(45deg);
+		   	 	}
+		   	 }
+		   }
+
+		}
+		.answers--correct{
+		  animation-name: goRight;
+		}
+
+
+ 	}
+}
+.form--rollIn{
+	animation: formRollIn $animationProps;
+	animation-timing-function: cubic-bezier(.52,-0.52,.7,1.09);
+}
+
+@keyframes formExpand{
+	0%{
+		width: $formWidth;
+		height: $formHeight;
+		border-radius: $formRadius;
+	}
+	50%{
+		width: $formWidth*5.5;
+		height: $formHeight;
+		border-radius: 1.5rem;
+	}
+	100%{
+		width: $formWidth*5.5;
+		height: $formHeight*8;
+		border-radius: 1.5rem;
+	}
+}
+
+@keyframes goUp{
+  0%{
+    transform: translateY(0);
+  }
+  100%{
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes goLeft{
+  0%{
+  	background: $brainlyOrange;
+    transform: translate(0, -100%);
+  }
+  20%{
+  	background: $brainlyRed;
+  }
+  100%{
+    background: $brainlyRed;
+    transform: translate(-100%, -100%);
+  }
+}
+@keyframes goRight{
+  0%{
+    background: $brainlyOrange;
+    transform: translate(0, -100%);
+  }
+  20%{
+  	background: $brainlyMint;
+  }
+  100%{
+    background: $brainlyMint;
+    transform: translate(100%, -100%);
+  }
+}
+@keyframes formRollIn{
+  0%{
+  	opacity: 1;
+    width: $formWidth*4;
+	height: $formHeight*8;
+	border-radius: 1.5rem;
+  }
+  100%{
+  	opacity: 0;
+  	height: 1rem;
+	width: 1rem;
+	border-radius: 50%;	
+  }
+}
+
+@media screen and (min-width: 600px){
+	$formWidth: 9rem;
+	@keyframes formExpand{
+		0%{
+			width: $formWidth;
+			height: $formHeight;
+			border-radius: $formRadius;
+		}
+		50%{
+			width: $formWidth*5.5;
+			height: $formHeight;
+			border-radius: 1.5rem;
+		}
+		100%{
+			width: $formWidth*5.5;
+			height: $formHeight*8;
+			border-radius: 1.5rem;
+		}
+	}
+	@keyframes formRollIn{
+	  0%{
+	  	opacity: 1;
+	    width: $formWidth*5.5;
+		height: $formHeight*8;
+		border-radius: 1.5rem;
+	  }
+	  100%{
+	  	opacity: 0;
+	  	height: 1rem;
+		width: 1rem;
+		border-radius: 50%;	
+	  }
+}
+}
+@media screen and (min-width: 1100px){
+	.form--active{
+		.form__questions{
+			.answers--active{
+				.answers__option:hover{
+					transition: all 0.4s ease;
+					background-color: #ffde8c;
+					label span:hover{
+						transform: translate(-50%, -50%) rotate(360deg);
+						background-color: $brainlyBlue;
+					}
+				  &:nth-child(2){
+				  	transition: all 0.4s ease;
+					background-color: #ffde8c;
+					label span:hover{
+						background-color: $brainlyBlue;
+						transform: translate(-50%, -50%) rotate(-360deg);
+					}
+				  }
+				}
+			}
+		}
+	}
+}
+
+

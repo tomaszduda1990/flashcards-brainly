@@ -1,0 +1,42 @@
+
+.logo{
+	position: relative;
+	&__signature{
+		position: absolute; 
+		top: 50%;
+		right: 0;
+		transform: translate(-50%,-50%);
+		a{
+			height: 100%;
+			width: 100%;
+			color: $brainlyMint;
+			letter-spacing: 0.2rem;
+			font-size: 1.5rem;
+			font-style: italic;
+			text-decoration: none;
+			transition: all 0.3s ease-in-out;
+		}
+	}
+	&__image{
+    width: $logoWidth;
+ 	}
+}
+
+@media screen and (min-width: 500px){
+	.logo{
+
+		&__image{
+	    width: $logoWidth*1.5;
+	 	}
+	}	
+}
+@media screen and (min-width: 1200px){
+	.logo{
+		&__signature{
+			a:hover{
+				color: $brainlyGrey;
+			}
+		}
+		
+	}	
+}

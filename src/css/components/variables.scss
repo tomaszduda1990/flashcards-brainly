@@ -1,0 +1,59 @@
+/*header vars*/
+
+$headerText: 4rem;
+
+/*general font settings:*/
+
+$fontBold: 900;
+$fontMedium: 700;
+$fontThin: 400;
+
+/*logo */
+
+$logoWidth: 10rem;
+
+/*flex settings*/
+
+@mixin flex($orientation){
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: $orientation;
+}
+
+/*button vars*/
+$buttonWidth: 14rem;
+$buttonHeight: 5rem;
+$buttonRadius: 1.5rem;
+$buttonLetterSpacing: 0.2rem;
+$buttonFontSize: 1.5rem;
+$buttonPosX: 1000%;
+
+/*colors*/
+
+$brainlyGrey: #e8eef1;
+$brainlyGreen: #53cf92;
+$brainlyBlack: #020a1b;
+$brainlyBlue: #57b2f8;
+$brainlyOrange: #fec83c;
+$brainlyPurple: #7a8adb;
+$brainlyRed: #ff796b;
+$brainlyMint: #b4efc2;
+
+/*form vars*/
+
+$formHeight: 5rem;
+$formWidth: 5rem;
+$formRadius: 50%;
+$formHeaderFontSize: 2rem;
+$inputTearSize: 5rem;
+
+
+/*animation props*/
+
+$animationProps: 1s cubic-bezier(.73,-0.5,.37,1.67) forwards 1;
+
+/* results vars*/
+$marginAll: 4rem;
+$resultsHeaderFontSize: 3rem;
+$resultsNumbersFontSize: 2rem;

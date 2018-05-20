@@ -1,0 +1,47 @@
+.footer{
+	padding: 1rem;
+	.social{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		
+		&__icon{
+			text-decoration: none;
+			border: 0.1rem solid white;
+			border-radius: 50%;
+			padding: 1rem;
+			display: block;
+			font-size: 2rem;
+			color: $brainlyGrey;
+		}
+	}
+}
+
+@media screen and (min-width: 500px){
+	.footer{
+		.social{
+			justify-content: flex-end;
+			&__icon{
+				margin: 1.5rem;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1200px){
+	.footer{
+		.social{
+			justify-content: flex-end;
+			&__icon{
+				transition: all 0.3s cubic-bezier(.73,-0.5,.37,1.67);
+				margin: 1.5rem;
+			}
+			&__icon:hover{
+				transform: scale(1.05);
+				color: $brainlyOrange;
+			}
+		}
+	}
+}

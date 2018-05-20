@@ -1,0 +1,100 @@
+.main{
+	position: relative;
+	width: 100%;
+	header{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		@include flex(column);
+		        
+		.header{
+			@include flex(column);
+			transform: scale(1) translateY(0);
+			animation: headerSlideIn $animationProps;
+			animation-duration: 1.2s;			
+			animation-delay: 1s;
+			&__text, &__icon{
+				margin: 1rem 0;
+			}
+			&__text{
+				font-weight: $fontBold;
+				font-size: $headerText;	
+			}
+			&__icon{
+				svg{
+					max-height: auto;
+					width: $headerText + 2rem;
+				}
+			}
+		}
+		.header--out{
+			animation: headerSlideOut $animationProps;
+			animation-delay: 0;
+			animation-duration: 1.2s;
+		}
+	}
+}
+
+@keyframes headerSlideIn{
+	0%{
+
+		transform: scale(1) translateY(0);
+	}
+	100%{
+		transform: scale(0.9) translateY(-100%);
+	}
+}
+@keyframes headerSlideOut{
+	0%{
+		opacity: 1;
+		transform: scale(0.9) translateY(-100%);
+	}
+	100%{
+		opacity: 0.6;
+		transform: scale(0.7) translateY(-500%);
+	}
+}
+
+
+@media screen and (min-width: 500px){
+	.main{
+		header{
+			.header{
+				&__text{
+					font-size: $headerText*1.5;	
+				}
+				&__icon{
+					svg{
+						max-height: auto;
+						width: $headerText*2;
+					}
+				}
+			}
+		}
+	}
+
+
+
+	@keyframes headerSlideIn{
+		0%{
+
+			transform: scale(1) translateY(0);
+		}
+		100%{
+			transform: scale(0.9) translateY(-150%);
+		}
+	}
+	@keyframes headerSlideOut{
+		0%{
+			opacity: 1;
+			transform: scale(0.9) translateY(-150%);
+		}
+		100%{
+			opacity: 0.6;
+			transform: scale(0.7) translateY(-900%);
+		}
+	}	
+}
+

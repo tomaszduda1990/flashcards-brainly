@@ -1,0 +1,61 @@
+.results{
+	opacity: 0;
+	padding: 2rem;
+	transform: translateY(-10%);
+	animation: showResults $animationProps;
+	&__header{
+		margin: $marginAll;
+		padding: 1rem;
+		color: $brainlyGrey;
+		font-weight: $fontBold;
+		font-size: $resultsHeaderFontSize;
+		line-height: $resultsHeaderFontSize;
+		border-bottom: 0.1rem solid #fff;
+	}
+	&__numbers{
+		margin: 0 auto;
+		border-radius: 50%;
+		height: 6rem;
+		width: 6rem;
+		background: $brainlyGrey;
+		@include flex(row);
+		p{
+			color: $brainlyBlack;
+			font-weight: $fontMedium;
+			font-size: $resultsNumbersFontSize;
+		}
+
+	}
+	&__quote{
+		margin: $marginAll;
+		line-height: $resultsNumbersFontSize;
+		color: $brainlyOrange;
+		font-size: $resultsNumbersFontSize;
+		font-weight: $fontBold;		
+
+	}
+}
+.results--hide{
+	animation: hideResults $animationProps;
+}
+
+@keyframes showResults{
+	0%{
+		opacity: 0;
+		transform: translateY(-10%);
+	}
+	100%{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes hideResults{
+	0%{
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100%{
+		opacity: 0;
+		transform: translateY(10%);
+	}
+}
